@@ -1,4 +1,4 @@
-package handlers
+package product
 
 import (
 	"Ecommerce/database"
@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func UpdateProduct(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 	productID := r.PathValue("id")
 
 	pid, err := strconv.Atoi(productID)
