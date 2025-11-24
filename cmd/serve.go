@@ -5,11 +5,13 @@ import (
 	"Ecommerce/rest"
 	"Ecommerce/rest/handlers/product"
 	"Ecommerce/rest/handlers/user"
+	"Ecommerce/rest/middlewares"
 )
 
 func Server() {
 	cnf := config.GetConfig()
-	productHandler := product.NewHandler()
+	middlewares := middlewares.NewMiddleware(cnf)
+	productHandler := product.NewHandler(middlewares)
 	userHandler := user.NewHandler()
 	server := rest.NewServer(
 		cnf,
